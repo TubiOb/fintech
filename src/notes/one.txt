@@ -1,0 +1,92 @@
+// WaitlistForm.tsx
+import React, { useState } from 'react';
+
+import 'firebase/auth';
+import 'firebase/firestore';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { app } from '../../firebase';
+import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import { Box, Input, Button, Text } from "@chakra-ui/react";
+
+
+
+const WaitlistForm: React.FC = () => {
+    const [email, setEmail] = useState<string>('');
+    const [waitlistPosition, setWaitlistPosition] = useState<number | null>(null);
+
+const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+  
+    try {
+    
+      const auth = getAuth(app);
+      const { user } = await createUserWithEmailAndPassword(auth, email, 'password');
+  
+      
+      const firestore = getFirestore(app);
+      const waitlistCollection = collection(firestore, 'waitlist');
+  
+     
+      const docRef = await addDoc(waitlistCollection, {
+        email: user?.email,
+        userId: user?.uid,
+      });
+  
+     
+      const waitlistSnapshot = await getDocs(waitlistCollection);
+      const lastPosition = waitlistSnapshot.docs.length;
+  
+      setWaitlistPosition(lastPosition); 
+  
+     
+      console.log('Successfully added to the waitlist!');
+    } catch (error) {
+      
+      console.error('Error adding to the waitlist:', error.message);
+    }
+  };
+  
+
+  
+    return (
+     <div className="">
+
+<Box  p={4}  maxW='1300px' mx='auto'>
+
+<Box w={['full', 'full', '70%', '70%']}>
+     <Text fontSize={['md', 'lg', 'xl']} fontWeight="bold" mb={1}>
+        Elevate Your Finances Together
+      </Text>
+      <Text mb={2} fontSize={['sm', 'md', 'lg']} >
+        Experience the joy of seamlessly splitting bills, achieving shared financial goals, and effortlessly tracking expenses as a team. Join the waitlist below for exclusive early access. Your relationship will thank you for it!
+      </Text>
+
+     </Box>
+
+     <Box display={['grid','grid','flex']} alignItems='center' gap={3}>
+        <form onSubmit={handleFormSubmit}>
+          <label>
+            Email:
+            <Input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </label>
+      
+          <Button bg='green.100' type="submit" _hover={{ bg: 'green.200' }} mt={[0,0,'7']}>
+          Join Waitlist
+        </Button>
+        </form>
+  
+        {waitlistPosition !== null && (
+          <p>You are number {waitlistPosition} on the waitlist.</p>
+        )}
+
+</Box>
+      </Box>
+
+
+
+     </div>
+    );
+  };
+  
+
+export default WaitlistForm;

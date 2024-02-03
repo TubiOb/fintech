@@ -1,0 +1,45 @@
+// import { Box, Input, Button, FormControl, FormLabel, Text } from "@chakra-ui/react";
+
+// const WaitlistForm = () => {
+
+
+//   return (
+//     <Box p={4}  maxW='1300px' mx='auto'>
+    //  <Box w={['full', 'full', '70%', '70%']}>
+    //  <Text fontSize={['md', 'lg', 'xl']} fontWeight="bold" mb={1}>
+    //     Elevate Your Finances Together
+    //   </Text>
+    //   <Text mb={2} fontSize={['sm', 'md', 'lg']} >
+    //     Experience the joy of seamlessly splitting bills, achieving shared financial goals, and effortlessly tracking expenses as a team. Join the waitlist below for exclusive early access. Your relationship will thank you for it!
+    //   </Text>
+
+    //  </Box>
+
+//    <Box display={['grid','grid','flex']} alignItems='center' gap={3}>
+  
+//         <FormControl isRequired>
+//           <FormLabel htmlFor="email">Email</FormLabel>
+//           <Input type="email" id="email" placeholder="Enter your email" />
+//         </FormControl>
+
+        // <Button bg='green.100' _hover={{ bg: 'green.200' }} mt={[0,0,'7']}>
+        //   Join Waitlist
+        // </Button>
+     
+//    </Box>
+  
+
+
+//     </Box>
+//   );
+// };
+
+// export default WaitlistForm;
+
+
+
+{/* <form className="launchlist-form" action="https://getlaunchlist.com/s/t1jkmQ" method="POST">
+   
+<input placeholder="type here" name="email" type="email" />
+<button type="submit">Sign Up</button>
+</form> */}
