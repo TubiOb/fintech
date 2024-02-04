@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { HomePage } from "./src/modules";
+import { AdminPage, HomePage } from "./src/modules";
 
 
 const Router = createBrowserRouter([
@@ -7,6 +7,11 @@ const Router = createBrowserRouter([
     path: "/",
     element: <HomePage  />,
   },
+  {
+    path: "/admin",
+    element: <AdminPage />,
+  },
+
  
 ]);
 

@@ -3,14 +3,18 @@ import { Box, Flex,Text, IconButton, useDisclosure, Drawer, DrawerOverlay, Drawe
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { MdJoinInner } from 'react-icons/md';
 
-const Header = () => {
+interface HeaderProps {
+  scrollToWaitlist: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex p={4} align="center" justify="space-between" maxW='1300px' mx='auto'>
     
       <Box>
-        <Text fontSize={["lg", 'x-large', 'xx-large']} fontWeight="bold">
+        <Text fontSize={["x-large", 'xx-large', 'xxx-large']} fontWeight="bold">
        Flex.
         </Text>
       </Box>
@@ -34,7 +38,7 @@ const Header = () => {
   >
     <Text fontSize="md">Contact</Text>
   </Box>
-  <Button bg='green.100' _hover={{ bg: 'green.200' }} leftIcon={<MdJoinInner />}>
+  <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={scrollToWaitlist} leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
 </Flex>
@@ -43,9 +47,10 @@ const Header = () => {
      
       <Box display={{ base: 'block', md: 'none' }}>
         <IconButton
-          icon={<HamburgerIcon />}
+          as={HamburgerIcon}
           aria-label="Open sidebar"
           variant="ghost"
+          boxSize={6}
           onClick={onOpen}
         />
       </Box>
@@ -63,7 +68,7 @@ const Header = () => {
               <Text fontSize="md">Home</Text>
               <Text fontSize="md">About</Text>
               <Text fontSize="md">Contact</Text>
-              <Button bg='green.100' _hover={{ bg: 'green.200' }} leftIcon={<MdJoinInner />}>
+              <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={scrollToWaitlist}  leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
             </Stack>
@@ -76,3 +81,6 @@ const Header = () => {
 }
 
 export default Header;
+
+
+

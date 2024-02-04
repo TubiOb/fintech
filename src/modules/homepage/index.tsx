@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { CardFeatures, Footer, Header, Hero, WaitlistForm } from '../../components';
+import { useRef } from 'react';
 
 const HomePage = () => {
   const headerControls = useAnimation();
@@ -10,6 +11,7 @@ const HomePage = () => {
   const waitlistFormControls = useAnimation();
   const cardFeaturesControls = useAnimation();
   const footerControls = useAnimation();
+  const waitlistRef = useRef<HTMLDivElement>(null); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,12 +37,13 @@ const HomePage = () => {
       <AnimatePresence>
           <Box bg="gray.100">
             <motion.div initial={{ y: 50 }} animate={{ y: 0 }}>
-              <Header />
+            <Header scrollToWaitlist={() => waitlistRef.current?.scrollIntoView({ behavior: 'smooth' })} />
             </motion.div>
             <motion.div initial={{ y: 50 }} animate={{ y: 0 }}>
-              <Hero />
+              <Hero  scrollToWaitlist={() => waitlistRef.current?.scrollIntoView({ behavior: 'smooth' })} />
             </motion.div>
           </Box>
+          <Box ref={waitlistRef}>
         <motion.div
           initial={{ x: -50 }}
           animate={waitlistFormControls}
@@ -49,6 +52,7 @@ const HomePage = () => {
         >
           <WaitlistForm />
         </motion.div>
+      </Box>
         <motion.div
           initial={{ x: 50 }}
           animate={cardFeaturesControls}

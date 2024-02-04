@@ -1,5 +1,4 @@
 
-
 import { Box, Grid, GridItem, Icon, Image, Text } from "@chakra-ui/react";
 import { FiCodesandbox } from "react-icons/fi";
 import { LuBadgeDollarSign } from "react-icons/lu";
@@ -15,7 +14,7 @@ interface FeatureCardProps {
   const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => (
   <GridItem colSpan={[2, 2, 1]} >
     <Box p={4} textAlign="center" >
-      <Icon as={icon} color='blue.300' boxSize={[8,10,12]} />
+      <Icon as={icon} color='blue.300' boxSize={[10,12,14]} />
       <Box mt={3}>
         <Text fontWeight="700" fontSize={["md", "lg"]}>
           {title}
@@ -29,7 +28,7 @@ interface FeatureCardProps {
 const CardFeatures = () => {
   return (
     <Box mt={10}>
-      <Text px='20px' textAlign='center' fontWeight="700" fontSize={["lg", "x-large", "xx-large"]}> Card Features</Text>
+      <Text px='20px' mb={4} textAlign='center' fontWeight="700" fontSize={["lg", "x-large", "xx-large"]}> Card Features</Text>
 
       <Grid templateRows={["repeat(2, 1fr)", "repeat(2, 1fr)"]} 
       templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} maxW='1300px' mx='auto'>

@@ -6,3 +6,16 @@ h1
 p {
   font-family: 'Montserrat', sans-serif !important;
 }
+
+
+
+@media (max-width: 600px) {
+  .table-, .table-th, .table-td{
+    display: block;
+  }
+}
+
+
+
+
+

@@ -10,13 +10,15 @@ const WaitlistForm: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false); 
   const [isLoading, setLoading] = useState(false); 
 
-  const toast = useToast(); // Create a toast instance
+  const toast = useToast(); 
+
+ 
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-        setLoading(true); // Set loading state to true
+        setLoading(true); 
       const auth = getAuth(app);
       const { user } = await createUserWithEmailAndPassword(auth, email, 'password');
 
@@ -26,7 +28,12 @@ const WaitlistForm: React.FC = () => {
       const docRef = await addDoc(waitlistCollection, {
         email: user?.email,
         userId: user?.uid,
+        created: new Date().toISOString(),
       });
+
+      console.log("Document written with ID: ", docRef.id);
+
+      localStorage.clear();
 
       const waitlistSnapshot = await getDocs(waitlistCollection);
       const lastPosition = waitlistSnapshot.docs.length;
@@ -61,10 +68,10 @@ const WaitlistForm: React.FC = () => {
   };
 
   return (
-    <div className="">
-      <Box p={4} maxW='1300px' mx='auto' mt={10}>
+    <div className="" >
+      <Box p={4} maxW='1300px' mx='auto' mt={14}>
       <Box w={['full', 'full', '70%', '70%']}>
-     <Text fontSize={['md', 'lg', 'xl']} fontWeight="bold" mb={1}>
+     <Text fontSize={["lg", "x-large", "xx-large"]}fontWeight="bold" mb={1}>
         Elevate Your Finances Together
       </Text>
       <Text mb={2} fontSize={['sm', 'md', 'lg']} >
@@ -83,7 +90,7 @@ const WaitlistForm: React.FC = () => {
          </FormControl>
 
           <Button bg='green.100' type="submit"   isLoading={isLoading} 
-            loadingText="Submitting..."
+            loadingText="Submitting..." 
           _hover={{ bg: 'green.200' }} mt={[0, 0, '7']}>
             Join Waitlist
           </Button>
