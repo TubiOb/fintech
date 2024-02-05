@@ -3,6 +3,8 @@ import { Box, Flex,Text, IconButton, useDisclosure, Drawer, DrawerOverlay, Drawe
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { MdJoinInner } from 'react-icons/md';
 import { HeaderProps } from '../../interface';
+import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ChakraLink,  } from '@chakra-ui/react'
 
 
 
@@ -32,6 +34,13 @@ const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
   >
     <Text fontSize="md">About</Text>
   </Box>
+
+
+
+<ChakraLink     mr={4}
+    _hover={{  color: 'green.300', cursor: 'pointer' }}  fontSize="md" as={ReactRouterLink} to='/admin'>
+  Admin
+</ChakraLink>
   <Box
     _hover={{ color: 'green.300', cursor: 'pointer' }}
   >
@@ -67,6 +76,9 @@ const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
               <Text fontSize="md">Home</Text>
               <Text fontSize="md">About</Text>
               <Text fontSize="md">Contact</Text>
+              <ChakraLink fontSize="md" as={ReactRouterLink} to='/admin'>
+  Admin
+</ChakraLink>
               <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={scrollToWaitlist}  leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
