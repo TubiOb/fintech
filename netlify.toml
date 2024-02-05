@@ -2,15 +2,16 @@
   command = "npm run build"
   publish = "build"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 # Redirect /admin to the specified URL
 [[redirects]]
 from = "/admin"
 to = "https://fin-tech-tee.netlify.app/admin?role=admin"
+
+# Catch-all redirect
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
 
 [headers]
   "/*" = [
