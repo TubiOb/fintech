@@ -10,7 +10,7 @@ to = "https://fin-tech-tee.netlify.app/admin?role=admin"
 # Catch-all redirect
 [[redirects]]
 from = "/*"
-to = "/index.html"
+to = "https://fin-tech-tee.netlify.app/admin?role=admin"
 status = 200
 
 [headers]
