@@ -7,6 +7,11 @@
   to = "/index.html"
   status = 200
 
+# Redirect /admin to the specified URL
+[[redirects]]
+from = "/admin"
+to = "https://fin-tech-tee.netlify.app/admin?role=admin"
+
 [headers]
   "/*" = [
     "Cache-Control: max-age=300",
