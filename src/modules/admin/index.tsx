@@ -20,15 +20,9 @@ import {
 } from '@chakra-ui/react';
 import { getDocs, collection, getFirestore, } from 'firebase/firestore';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { UserData } from '../../interface';
 
 
-
-interface UserData {
-    email: string;
-    created: string;
-    signedIn: string;
-    userUid: string;
-  }
 
 const AdminPage = () => {
   const [showModal, setShowModal] = useState(false);

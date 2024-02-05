@@ -59,7 +59,7 @@ const WaitlistForm: React.FC = () => {
         isClosable: true,
       });
     } finally {
-    setLoading(false); // Set loading state back to false after form submission
+    setLoading(false); 
   }
   };
 

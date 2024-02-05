@@ -2,10 +2,9 @@
 import { Box, Flex,Text, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, Stack, DrawerCloseButton, Button,  } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { MdJoinInner } from 'react-icons/md';
+import { HeaderProps } from '../../interface';
 
-interface HeaderProps {
-  scrollToWaitlist: () => void;
-}
+
 
 const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

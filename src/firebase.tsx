@@ -19,16 +19,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const auth = getAuth(app);  // Move the declaration of 'auth' to here
+const auth = getAuth(app); 
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 
-// Listen for changes in authentication state
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log('User is logged in:', user.uid);
+    // console.log('User is logged in:', user.uid);
   } else {
-    console.log('User is logged out');
+    // console.log('User is logged out');
   }
 });
 

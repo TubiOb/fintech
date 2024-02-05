@@ -4,12 +4,9 @@ import { FiCodesandbox } from "react-icons/fi";
 import { LuBadgeDollarSign } from "react-icons/lu";
 import { MdOutlineCreditCard, MdPhoneAndroid } from "react-icons/md";
 import { card, } from "../../assets";
+import { FeatureCardProps } from "../../interface";
 
-interface FeatureCardProps {
-    icon: React.ElementType;
-    title: string;
-    description: string;
-  }
+
   
   const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => (
   <GridItem colSpan={[2, 2, 1]} >
