@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useToast, Box, Input, Button, Text, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, FormControl, FormLabel } from '@chakra-ui/react';
+import { useToast, Box, Input, Button, Text, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, FormControl,  } from '@chakra-ui/react';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { app } from '../../firebase';
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
@@ -69,8 +69,8 @@ const WaitlistForm: React.FC = () => {
 
   return (
     <div className="" >
-      <Box p={4} maxW='1300px' mx='auto' mt={14}>
-      <Box w={['full', 'full', '70%', '70%']}>
+      <Box p={4} maxW='1300px' mx='auto' textAlign='center' mt={14}>
+      <Box w={['full', ]} mb={5}>
      <Text fontSize={["lg", "x-large", "xx-large"]}fontWeight="bold" mb={1}>
         Elevate Your Finances Together
       </Text>
@@ -82,16 +82,16 @@ const WaitlistForm: React.FC = () => {
 
    
         <form onSubmit={handleFormSubmit}>
-        <Box display={['grid','grid','flex']} alignItems='center' gap={3} w='full'> 
+        <Box display={['grid','grid','flex']} maxW='70%' mx='auto' alignItems='center' gap={3} w='full'> 
       
                    <FormControl isRequired>
-         <FormLabel htmlFor="email">Email</FormLabel>
+         {/* <FormLabel htmlFor="email" textAlign='center'  mb={2}>Email</FormLabel> */}
          <Input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
          </FormControl>
 
           <Button bg='green.100' type="submit"   isLoading={isLoading} 
             loadingText="Submitting..." 
-          _hover={{ bg: 'green.200' }} mt={[0, 0, '7']}>
+          _hover={{ bg: 'green.200' }}>
             Join Waitlist
           </Button>
           </Box>

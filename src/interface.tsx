@@ -1,5 +1,5 @@
 export interface HeaderProps {
-    scrollToWaitlist: () => void;
+    scrollToWaitlist?: () => void;
   }
 
 export  interface FeatureCardProps {
@@ -9,7 +9,7 @@ export  interface FeatureCardProps {
   }
 
 export interface HeaderProps {
-  scrollToWaitlist: () => void;
+  scrollToWaitlist?: () => void;
 }
 
 export interface UserData {

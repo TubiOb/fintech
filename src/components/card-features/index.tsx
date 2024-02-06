@@ -24,11 +24,11 @@ import { FeatureCardProps } from "../../interface";
 
 const CardFeatures = () => {
   return (
-    <Box mt={10}>
+    <Box py={10} bg='gray.100'>
       <Text px='20px' mb={4} textAlign='center' fontWeight="700" fontSize={["lg", "x-large", "xx-large"]}> Card Features</Text>
 
       <Grid templateRows={["repeat(2, 1fr)", "repeat(2, 1fr)"]} 
-      templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} maxW='1300px' mx='auto'>
+      templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} maxW='1000px' mx='auto'>
         <FeatureCard
           icon={LuBadgeDollarSign}
           title="Ultimate cashback match"

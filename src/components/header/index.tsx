@@ -3,16 +3,22 @@ import { Box, Flex,Text, IconButton, useDisclosure, Drawer, DrawerOverlay, Drawe
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { MdJoinInner } from 'react-icons/md';
 import { HeaderProps } from '../../interface';
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
 import { Link as ChakraLink,  } from '@chakra-ui/react'
 
 
 
-const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
+
+const Header: React.FC<HeaderProps> = ({  }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate(); 
+
+  const handleJoinWaitlist = () => {
+    navigate('/waitlist'); 
+  };
 
   return (
-    <Flex p={4} align="center" justify="space-between" maxW='1300px' mx='auto'>
+    <Flex p={4} align="center" justify="space-between" w={['full', 'full', 'full',  '1200px', '1500px']} mx='auto'>
     
       <Box>
         <Text fontSize={["x-large", 'xx-large', 'xxx-large']} fontWeight="bold">
@@ -21,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
       </Box>
 
    
-      <Flex align="center" fontWeight='600' gap={4} display={{ base: 'none', md: 'flex' }}>
+      <Flex align="center" fontWeight='600' gap={4} display={{ base: 'none', lg: 'flex' }}>
   <Box
     mr={4}
     _hover={{ color: 'green.300', cursor: 'pointer' }} 
@@ -46,14 +52,15 @@ const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
   >
     <Text fontSize="md">Contact</Text>
   </Box>
-  <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={scrollToWaitlist} leftIcon={<MdJoinInner />}>
+
+  <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={handleJoinWaitlist}  leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
 </Flex>
 
 
      
-      <Box display={{ base: 'block', md: 'none' }}>
+      <Box display={{ base: 'block', lg: 'none' }}>
         <IconButton
           as={HamburgerIcon}
           aria-label="Open sidebar"
@@ -77,11 +84,13 @@ const Header: React.FC<HeaderProps> = ({ scrollToWaitlist }) => {
               <Text fontSize="md">About</Text>
               <Text fontSize="md">Contact</Text>
               <ChakraLink fontSize="md" as={ReactRouterLink} to='/admin'>
-  Admin
-</ChakraLink>
-              <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={scrollToWaitlist}  leftIcon={<MdJoinInner />}>
+                 Admin
+                </ChakraLink>
+              <Button bg='green.100' _hover={{ bg: 'green.200' }}
+               onClick={handleJoinWaitlist}  leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
+        
             </Stack>
           </DrawerBody>
         </DrawerContent>

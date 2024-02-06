@@ -1,11 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import { AdminPage, HomePage } from "./src/modules";
+import { AdminPage, HomePage, Landingpage } from "./src/modules";
 
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage  />,
+    element: <Landingpage  />,
+  },
+  {
+    path: "/waitlist",
+    element: <HomePage />,
   },
   {
     path: "/admin",

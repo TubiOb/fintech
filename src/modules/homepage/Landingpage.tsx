@@ -2,16 +2,15 @@
 import { Box } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { CardFeatures, Footer, WaitlistForm } from '../../components';
-import { useRef } from 'react';
+import { Header, Hero, } from '../../components';
 
-const HomePage = () => {
+
+const Landingpage = () => {
   const headerControls = useAnimation();
   const heroControls = useAnimation();
   const waitlistFormControls = useAnimation();
   const cardFeaturesControls = useAnimation();
   const footerControls = useAnimation();
-  const waitlistRef = useRef<HTMLDivElement>(null); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,41 +32,22 @@ const HomePage = () => {
   }, [headerControls, heroControls, waitlistFormControls, cardFeaturesControls, footerControls]);
 
   return (
-    <Box fontFamily="Montserrat, sans-serif">
-<AnimatePresence>
-  <motion.div
-    key="cardFeatures"
-    initial={{ y: -50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    exit={{ y: -50, opacity: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    <CardFeatures />
-  </motion.div>
-  <Box ref={waitlistRef}>
-    <motion.div
-      key="waitlistForm"
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -50, opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <WaitlistForm />
-    </motion.div>
-  </Box>
-  <motion.div
-    key="footer"
-    initial={{ y: -50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    exit={{ y: -50, opacity: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    <Footer />
-  </motion.div>
-</AnimatePresence>
+    <Box fontFamily="Montserrat, sans-serif"  h={['70vh','80vh', '90vh', '100vh']} >
+      <AnimatePresence>
+          <Box bg="gray.100" alignItems='center' display={['grid', 'grid', 'grid', 'flex']} flexDir={'column'}>
+            <motion.div initial={{ y: 50 }} animate={{ y: 0 }} >
+          <Box w="100%">  <Header /></Box>
+            </motion.div>
+            <motion.div initial={{ y: 50 }} animate={{ y: 0 }}>
+              <Hero />
+            </motion.div>
+          </Box>
 
+         
+       
+      </AnimatePresence>
     </Box>
   );
 };
 
-export default HomePage;
+export default Landingpage
