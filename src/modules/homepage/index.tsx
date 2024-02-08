@@ -1,17 +1,14 @@
-
 import { Box } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { CardFeatures, Footer, WaitlistForm } from '../../components';
-import { useRef } from 'react';
+import { CardFeatures, Footer, WaitlistForm, Hero } from '../../components';
 
 const HomePage = () => {
   const headerControls = useAnimation();
   const heroControls = useAnimation();
-  const waitlistFormControls = useAnimation();
   const cardFeaturesControls = useAnimation();
   const footerControls = useAnimation();
-  const waitlistRef = useRef<HTMLDivElement>(null); 
+  const waitlistRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +16,6 @@ const HomePage = () => {
       if (rect.top < window.innerHeight) {
         headerControls.start({ x: 0 });
         heroControls.start({ x: 0 });
-        waitlistFormControls.start({ x: 0 });
         cardFeaturesControls.start({ x: 0 });
         footerControls.start({ x: 0 });
       }
@@ -30,42 +26,51 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [headerControls, heroControls, waitlistFormControls, cardFeaturesControls, footerControls]);
+  }, [headerControls, heroControls, cardFeaturesControls, footerControls]);
+
+  const handleJoinWaitlist = () => {
+    if (waitlistRef.current) {
+      waitlistRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <Box fontFamily="Montserrat, sans-serif">
-<AnimatePresence>
-  <motion.div
-    key="cardFeatures"
-    initial={{ y: -50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    exit={{ y: -50, opacity: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    <CardFeatures />
-  </motion.div>
-  <Box ref={waitlistRef}>
-    <motion.div
-      key="waitlistForm"
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -50, opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <WaitlistForm />
-    </motion.div>
-  </Box>
-  <motion.div
-    key="footer"
-    initial={{ y: -50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    exit={{ y: -50, opacity: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    <Footer />
-  </motion.div>
-</AnimatePresence>
-
+      <AnimatePresence>
+        <Box>
+          <Box bg="gray.100">
+            <motion.div key="hero" initial={{ y: 50 }} animate={{ y: 0 }}>
+              <Hero handleJoinWaitlist={handleJoinWaitlist} />
+            </motion.div>
+          </Box>
+        </Box>
+        <motion.div
+          key="cardFeatures"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <CardFeatures />
+        </motion.div>
+        <motion.div key="waitlistForm" ref={waitlistRef} 
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <WaitlistForm />
+        </motion.div>
+        <motion.div
+          key="footer"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Footer />
+        </motion.div>
+      </AnimatePresence>
     </Box>
   );
 };

@@ -3,19 +3,17 @@ import { Box, Flex,Text, IconButton, useDisclosure, Drawer, DrawerOverlay, Drawe
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { MdJoinInner } from 'react-icons/md';
 import { HeaderProps } from '../../interface';
-import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
+import { Link as ReactRouterLink,  } from 'react-router-dom'
 import { Link as ChakraLink,  } from '@chakra-ui/react'
 
 
 
 
-const Header: React.FC<HeaderProps> = ({  }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate(); 
 
-  const handleJoinWaitlist = () => {
-    navigate('/waitlist'); 
-  };
+const Header: React.FC<HeaderProps> = ({ handleJoinWaitlist }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+
 
   return (
     <Flex p={4} align="center" justify="space-between" w={['full', 'full', 'full',  '1200px', '1500px']} mx='auto'>
@@ -53,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({  }) => {
     <Text fontSize="md">Contact</Text>
   </Box>
 
-  <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={handleJoinWaitlist}  leftIcon={<MdJoinInner />}>
+  <Button bg='green.100' _hover={{ bg: 'green.200' }} onClick={handleJoinWaitlist} leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
 </Flex>
@@ -87,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({  }) => {
                  Admin
                 </ChakraLink>
               <Button bg='green.100' _hover={{ bg: 'green.200' }}
-               onClick={handleJoinWaitlist}  leftIcon={<MdJoinInner />}>
+              onClick={handleJoinWaitlist}  leftIcon={<MdJoinInner />}>
           Join Waitlist
         </Button>
         

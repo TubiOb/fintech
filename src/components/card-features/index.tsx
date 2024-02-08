@@ -7,6 +7,8 @@ import { card, } from "../../assets";
 import { FeatureCardProps } from "../../interface";
 
 
+
+
   
   const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => (
   <GridItem colSpan={[2, 2, 1]} >
@@ -24,7 +26,7 @@ import { FeatureCardProps } from "../../interface";
 
 const CardFeatures = () => {
   return (
-    <Box py={10} bg='gray.100'>
+    <Box mb={10} mt={[10,14, 18, 20]} className="margin" >
       <Text px='20px' mb={4} textAlign='center' fontWeight="700" fontSize={["lg", "x-large", "xx-large"]}> Card Features</Text>
 
       <Grid templateRows={["repeat(2, 1fr)", "repeat(2, 1fr)"]} 

@@ -10,6 +10,7 @@ export  interface FeatureCardProps {
 
 export interface HeaderProps {
   scrollToWaitlist?: () => void;
+  handleJoinWaitlist: () => void;
 }
 
 export interface UserData {
