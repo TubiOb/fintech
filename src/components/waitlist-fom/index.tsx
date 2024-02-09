@@ -3,6 +3,8 @@ import { useToast, Box, Input, Button, Text, Modal, ModalOverlay, ModalContent, 
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { app } from '../../firebase';
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 const WaitlistForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -67,9 +69,19 @@ const WaitlistForm: React.FC = () => {
     setModalOpen(false);
   };
 
+
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['1', '1.33 1'],
+  });
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1.6]);
+
+
   return (
     <div className="" >
-      <Box p={4} maxW='1300px' mx='auto' textAlign='center' mt={14}>
+      <Box as={motion.div} ref={ref} style={{ scale: scaleProgress, opacity: opacityProgress }} transformOrigin='bottom' p={4} maxW='1300px' mx='auto' textAlign='center' mt={14}>
       <Box w={['full', ]} mb={5}>
      <Text fontSize={["lg", "x-large", "xx-large"]}fontWeight="bold" mb={1}>
         Elevate Your Finances Together

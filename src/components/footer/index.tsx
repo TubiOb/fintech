@@ -3,9 +3,10 @@ import { FaFacebook, FaInstagram, FaPhoneAlt, FaTwitter } from "react-icons/fa";
 
 
 const Footer = () => {
+
   return (
     <Box mt="16" as="footer" py={[10]} px={4} bg="gray.100" color="black" fontWeight="bold" fontSize={['md', 'lg']}>
-      <Grid  maxW='1300px' mx='auto' templateColumns={['1fr', '1fr', '1fr 1fr', 'repeat(5, 1fr)']} gap={4} textAlign="left">
+      <Grid maxW='1300px' mx='auto' templateColumns={['1fr', '1fr', '1fr 1fr', 'repeat(5, 1fr)']} gap={4} textAlign="left">
       
         <Box>
           <Text >About Company</Text>
